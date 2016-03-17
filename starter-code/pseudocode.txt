@@ -23,8 +23,6 @@ func mergeSort( var a as array )
 
      return merge( l1, l2 ) // O(n)
 end func
-// O(n) because, even though the method contains O(log) and a call to a method
-//that is O(n), the slowest part of this method is the merge method, which is O(n).
 
 func merge( var a as array, var b as array )
      var c as array
@@ -94,5 +92,5 @@ func partition(var a as array, var low as int, var high as int){
     swap(a[low], a[leftwall])
 
     return (leftwall)
-// O(n) because the quicksort method calls the partition method, which is O(n).
-// Then it calls itself recursively twice.
+// O(n^2) because the quicksort method calls the partition method, which is O(n),
+// and the recursive quicksort method calls another for loop (pivotLocation).
