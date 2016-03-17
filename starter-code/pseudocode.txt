@@ -7,6 +7,8 @@ func insertionSort( var a as array )
                 swap a[j] and a[j-1]
 end func
 
+// O(n^2) because there are two for loops nested.
+
 Merge Sort:
 
 func mergeSort( var a as array )
@@ -17,9 +19,12 @@ func mergeSort( var a as array )
 
      l1 = mergesort( l1 )
      l2 = mergesort( l2 )
+     // O(log)
 
-     return merge( l1, l2 )
+     return merge( l1, l2 ) // O(n)
 end func
+// O(n) because, even though the method contains O(log) and a call to a method
+//that is O(n), the slowest part of this method is the merge method, which is O(n).
 
 func merge( var a as array, var b as array )
      var c as array
@@ -39,6 +44,8 @@ func merge( var a as array, var b as array )
           remove b[0] from b
      return c
 end func
+// O(n) because each while loop checks the array n number of times, and they
+// are not nested.
 
 Selection Sort:
 
@@ -64,6 +71,7 @@ for (j = 0; j < n-1; j++) {
         swap(a[j], a[iMin]);
     }
 }
+// O(n^2) because there is a for loop nested within the for loop.
 
 Quick Sort:
 
@@ -78,7 +86,7 @@ func partition(var a as array, var low as int, var high as int){
     pivot = a[low]
     leftwall = low
 
-    for i = low + 1 to high
+    for i = low + 1 to high // O(n)
         if (a[i] < pivot)
             leftwall = leftwall + 1
             swap(a[i], a[leftwall])
@@ -86,3 +94,5 @@ func partition(var a as array, var low as int, var high as int){
     swap(a[low], a[leftwall])
 
     return (leftwall)
+// O(n) because the quicksort method calls the partition method, which is O(n).
+// Then it calls itself recursively twice.
